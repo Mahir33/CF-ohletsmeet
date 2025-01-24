@@ -44,7 +44,7 @@ functions:
               - X-Amz-User-Agent
 
   getEvents:
-    handler: handler.getEvents
+    handler: handler.getCalendarEvents
     events:
       - http:
           path: api/get-events/{access_token}
