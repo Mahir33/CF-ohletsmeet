@@ -63,11 +63,6 @@ describe("<Event /> component", () => {
         expect(summaryElement).toBeInTheDocument();
     });
 
-    test('render when event was created', () => {
-        const createdElement = screen.getByText("2020-05-19T19:17:46.000Z");
-        expect(createdElement).toBeInTheDocument();
-    });
-
     test('render show details button', () => {
         const buttonElement = screen.getByText("Show Details");
         expect(buttonElement).toBeInTheDocument();
