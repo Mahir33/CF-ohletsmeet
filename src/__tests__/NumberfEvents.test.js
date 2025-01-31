@@ -20,12 +20,19 @@ describe('<NumberOfEvents /> component', () => {
         const numberOfEvents = NumberOfEventsDOM.queryByRole('textbox');
         expect(numberOfEvents).toBeInTheDocument();
     });
+    
+});
 
-    test('o ensure that the default value of the input field is 32.', () => {
-        const numberOfEvents = NumberOfEventsDOM.queryByRole('textbox');
-        expect(numberOfEvents.value).toBe('32');
+describe('<NumberOfEvents /> integration', () => {
+    let NumberOfEventsDOM;
+    beforeEach(() => {
+        NumberOfEventsDOM = render(
+            <NumberOfEvents 
+                numberOfEvents={32} 
+                setNumberOfEvents={() => {}}
+        />
+        );
     });
-
     test('the value of the NumberOfEvents component’s textbox changes accordingly when a user types in it within App', async () => {
         render(<App />);
         const numberOfEvents = screen.queryAllByTestId('number-of-events-input');
@@ -36,5 +43,9 @@ describe('<NumberOfEvents /> component', () => {
         await user.type(element, '{backspace}{backspace}10');
         expect(element.value).toBe('10');
     });
-    
+
+    test('ensure that the default value of the input field is 32.', () => {
+        const numberOfEvents = NumberOfEventsDOM.queryByRole('textbox');
+        expect(numberOfEvents.value).toBe('32');
+    });
 });

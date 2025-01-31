@@ -7,7 +7,7 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-const getToken = async (code) => {
+export const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const response = await fetch(
     'https://02a6w83iv8.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode
@@ -19,13 +19,14 @@ const getToken = async (code) => {
   return access_token;
  };
 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   const response = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   );
   const result = await response.json();
   return result;
 };
+
 export const getAccessToken = async () => {
 
   const accessToken = localStorage.getItem('access_token');
@@ -48,7 +49,7 @@ export const getAccessToken = async () => {
   return accessToken;
 };
 
-const removeQuery = () => {
+export const removeQuery = () => {
   let newurl;
   if (window.history.pushState && window.location.pathname) {
     newurl =
