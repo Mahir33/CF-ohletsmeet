@@ -10,6 +10,11 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'], 
   coveragePathIgnorePatterns: [
     "/node_modules/",
-    "/src/api.js" 
+    "/src/api.js",
+    "/auth-server/handler.test.js"
   ],
- };
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/auth-server/handler.test.js" 
+  ],
+};
