@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import EventList from './components/EventList';
 import CitySearch from './components/CitySearch';
 import NumberOfEvents from './components/NumberOfEvents';
+import TriangleLoader from './components/TriangleLoader';
 // API:
 import { extractLocations, getEvents } from './api';
 // CSS:
@@ -12,8 +13,9 @@ function App() {
 
   const [events, setEvents] = useState([]);
   const [numberOfEvents, setNumberOfEvents] = useState(32);
-  const [ allLocations, setAllLocations ] = useState(null);
+  const [allLocations, setAllLocations] = useState(null);
   const [currentCity, setCurrentCity] = useState("See all cities");
+  const [loading, setLoading] = useState(true);
   
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -25,8 +27,17 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData()
+    fetchData();
+    setTimeout(() => setLoading(false), 2000);
   }, [numberOfEvents, currentCity]);
+
+  if (loading) {
+    return (
+      <div className="loader-container">
+        <TriangleLoader />
+      </div>
+    );
+  }
 
   return (
     <div className="App">
