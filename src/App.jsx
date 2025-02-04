@@ -13,10 +13,10 @@ function App() {
 
   const [events, setEvents] = useState([]);
   const [numberOfEvents, setNumberOfEvents] = useState(32);
-  const [ allLocations, setAllLocations ] = useState(null);
+  const [allLocations, setAllLocations ] = useState(null);
   const [currentCity, setCurrentCity] = useState("See all cities");
   const [loading, setLoading] = useState(true);
-  const [showLoading, setShowLoading] = useState(false);
+
 
 
   
@@ -29,12 +29,15 @@ function App() {
     setAllLocations(extractLocations(allEvents))
   }
 
+  const showHideLoading = () => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }
+
   useEffect(() => {
     fetchData();
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-    
+    showHideLoading();
   }, [numberOfEvents, currentCity]);
 
   return (
