@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import EventList from './components/EventList';
 import CitySearch from './components/CitySearch';
 import NumberOfEvents from './components/NumberOfEvents';
+import Loader from './components/Loader';
 // API:
 import { extractLocations, getEvents } from './api';
 // CSS:
@@ -14,6 +15,10 @@ function App() {
   const [numberOfEvents, setNumberOfEvents] = useState(32);
   const [ allLocations, setAllLocations ] = useState(null);
   const [currentCity, setCurrentCity] = useState("See all cities");
+  const [loading, setLoading] = useState(true);
+  const [showLoading, setShowLoading] = useState(false);
+
+
   
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -25,11 +30,20 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData()
+    fetchData();
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    
   }, [numberOfEvents, currentCity]);
 
   return (
     <div className="App">
+      {loading && (
+        <div className="loading-screen">
+          <Loader />
+        </div>
+      )}
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity}/>
       <NumberOfEvents numberOfEvents={numberOfEvents} setNumberOfEvents={setNumberOfEvents}/>
       <EventList events={events}/>
