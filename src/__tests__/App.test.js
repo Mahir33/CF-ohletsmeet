@@ -25,6 +25,10 @@ describe('<App /> component', () => {
         expect(AppDOM.querySelector('#number-of-events')).toBeInTheDocument();
     });
 
+    test("renders a loader", () => {
+        expect(AppDOM.querySelector('.loader')).toBeInTheDocument();
+    });
+
 });
 
 describe('<App /> integration', () => {
@@ -51,8 +55,6 @@ describe('<App /> integration', () => {
         const berlinEvents = allEvents.filter(
           event => event.location === 'Berlin, Germany'
         );
-     
-     
         expect(allRenderedEventItems.length).toBe(berlinEvents.length);
       });
 
