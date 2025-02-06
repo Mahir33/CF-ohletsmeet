@@ -10,7 +10,11 @@ describe("<CitySearch /> component", () => {
     let CitySearchDOM;
     let cityTextBox;
     beforeEach(() => {
-        CitySearchDOM = render(<CitySearch allLocations={[]} setCurrentCity={() => {}} />);
+        CitySearchDOM = render(<CitySearch 
+        allLocations={[]} 
+        setCurrentCity={() => {}} 
+        setInfoAlert={() => {}}    
+        />);
         cityTextBox = CitySearchDOM.queryByRole('textbox');
     });
 
@@ -36,7 +40,7 @@ describe("<CitySearch /> component", () => {
         const user = userEvent.setup();
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
-        CitySearchDOM.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => {}} />);
+        CitySearchDOM.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => {}} setInfoAlert={() => {}} />);
 
         // user types "Berlin" in city textbox
         await user.type(cityTextBox, "Berlin");
@@ -62,6 +66,7 @@ describe("<CitySearch /> component", () => {
             <CitySearch
                 allLocations={allLocations}
                 setCurrentCity={() => { }}
+                setInfoAlert={() => {}}
             />);
 
         await user.type(cityTextBox, "Berlin");
@@ -82,6 +87,7 @@ describe("<CitySearch /> component", () => {
             <CitySearch
                 allLocations={allLocations}
                 setCurrentCity={() => { }}
+                setInfoAlert={() => {}}
             />);
 
         await user.type(cityTextBox, "Berlin");
@@ -104,6 +110,7 @@ describe("<CitySearch /> component", () => {
             <CitySearch
                 allLocations={allLocations}
                 setCurrentCity={setCurrentCity}
+                setInfoAlert={() => {}}
             />);
 
         await user.type(cityTextBox, "Berlin");
@@ -120,7 +127,7 @@ describe("<CitySearch /> component", () => {
         const user = userEvent.setup();
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
-        CitySearchDOM.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => {}} />);
+        CitySearchDOM.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => {}} setInfoAlert={() => {}} />);
 
         // user types "Berlin" in city textbox
         await user.type(cityTextBox, "Berlin");
@@ -139,6 +146,7 @@ describe("<CitySearch /> component", () => {
             <CitySearch
                 allLocations={allLocations}
                 setCurrentCity={setCurrentCity}
+                setInfoAlert={() => {}}
             />);
 
         await user.type(cityTextBox, "Berlin");
@@ -153,7 +161,7 @@ describe("<CitySearch /> component", () => {
 
     test('handles case when allLocations is undefined', async () => {
         const user = userEvent.setup();
-        CitySearchDOM.rerender(<CitySearch allLocations={undefined} setCurrentCity={() => {}} />);
+        CitySearchDOM.rerender(<CitySearch allLocations={undefined} setCurrentCity={() => {}} setInfoAlert={() => {}} />);
 
         // user types "Berlin" in city textbox
         await user.type(cityTextBox, "Berlin");

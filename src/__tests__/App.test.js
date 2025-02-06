@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, within } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { getEvents } from './../api';
 import App from './../App';
@@ -66,10 +66,13 @@ describe('<App /> integration', () => {
         const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
         const NumberOfEventsInput = within(NumberOfEventsDOM).queryByTestId('number-of-events-input');
     
-        await user.type(NumberOfEventsInput, '{backspace}{backspace}10');
+        await user.clear(NumberOfEventsInput);
+        await user.type(NumberOfEventsInput, '10');
     
         const EventListDOM = AppDOM.querySelector('#event-list');
-        const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
-        expect(allRenderedEventItems.length).toBe(10);
-      });
+        await waitFor(() => {
+            const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
+            expect(allRenderedEventItems.length).toBe(10);
+        });
+    });
 });

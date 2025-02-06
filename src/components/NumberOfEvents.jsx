@@ -1,22 +1,34 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents }) => {
+const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setErrorAlert }) => {
+    const [error, setError] = useState('');
+
+    const handleInputChanged = (event) => {
+        const value = parseInt(event.target.value, 10);
+        if (value < 1 || value > 32) {
+            setError('Select number from 1 to 32');
+            setErrorAlert('Select number from 1 to 32');
+        } else {
+            setError('');
+            setErrorAlert('');
+            setNumberOfEvents(value);
+        }
+    };
 
     return (
         <div id="number-of-events">
-            <label htmlFor="number-of-events">Number of Events:</label>
+            <label htmlFor="number-of-events-input">Number of Events</label>
             <input
-                aria-label="Number of Events"
-                className="number-of-events-input"
                 type="number"
+                className="number-of-events"
+                id="number-of-events-input"
+                value={numberOfEvents || ''}
+                onChange={handleInputChanged}
                 data-testid="number-of-events-input"
-                id="number-of-events"
-                value={numberOfEvents}
-                role="textbox"
-                onChange={(e) => setNumberOfEvents(e.target.value)}
             />
+            {error && <div className="error-alert">{error}</div>}
         </div>
     );
-}
+};
 
 export default NumberOfEvents;

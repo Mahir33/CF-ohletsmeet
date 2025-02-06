@@ -1,51 +1,47 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import  userEvent  from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
 import NumberOfEvents from '../components/NumberOfEvents';
-import App from '../App';
+
 describe('<NumberOfEvents /> component', () => {
+  let setNumberOfEvents, setErrorAlert;
 
-    let NumberOfEventsDOM;
-    beforeEach(() => {
-        NumberOfEventsDOM = render(
-            <NumberOfEvents 
-                numberOfEvents={32} 
-                setNumberOfEvents={() => {}}
-        />
-        );
-    });
-    
+  beforeEach(() => {
+    setNumberOfEvents = jest.fn();
+    setErrorAlert = jest.fn();
+  });
 
-    test('component contains an element with the role of the textbox', () => {
-        const numberOfEvents = NumberOfEventsDOM.queryByRole('textbox');
-        expect(numberOfEvents).toBeInTheDocument();
-    });
-    
-});
+  test('renders input field with correct initial value', () => {
+    render(<NumberOfEvents numberOfEvents={32} setNumberOfEvents={setNumberOfEvents} setErrorAlert={setErrorAlert} />);
+    const inputElement = screen.getByTestId('number-of-events-input');
+    expect(inputElement).toBeInTheDocument();
+    expect(inputElement).toHaveValue(32);
+  });
 
-describe('<NumberOfEvents /> integration', () => {
-    let NumberOfEventsDOM;
-    beforeEach(() => {
-        NumberOfEventsDOM = render(
-            <NumberOfEvents 
-                numberOfEvents={32} 
-                setNumberOfEvents={() => {}}
-        />
-        );
-    });
-    test('the value of the NumberOfEvents component’s textbox changes accordingly when a user types in it within App', async () => {
-        render(<App />);
-        const numberOfEvents = screen.queryAllByTestId('number-of-events-input');
-        const element = numberOfEvents[1];
-        expect(element.value).toBe('32');
+  test('calls setNumberOfEvents and setErrorAlert with correct values when input is valid', () => {
+    render(<NumberOfEvents numberOfEvents={32} setNumberOfEvents={setNumberOfEvents} setErrorAlert={setErrorAlert} />);
+    const inputElement = screen.getByTestId('number-of-events-input');
+    fireEvent.change(inputElement, { target: { value: '10' } });
+    expect(setNumberOfEvents).toHaveBeenCalledWith(10);
+    expect(setErrorAlert).toHaveBeenCalledWith('');
+  });
 
-        const user = userEvent.setup();
-        await user.type(element, '{backspace}{backspace}10');
-        expect(element.value).toBe('10');
-    });
+  test('shows error message and calls setErrorAlert when input is invalid', () => {
+    render(<NumberOfEvents numberOfEvents={32} setNumberOfEvents={setNumberOfEvents} setErrorAlert={setErrorAlert} />);
+    const inputElement = screen.getByTestId('number-of-events-input');
+    fireEvent.change(inputElement, { target: { value: '0' } });
+    expect(screen.getByText('Select number from 1 to 32')).toBeInTheDocument();
+    expect(setErrorAlert).toHaveBeenCalledWith('Select number from 1 to 32');
+    expect(setNumberOfEvents).not.toHaveBeenCalled();
+  });
 
-    test('ensure that the default value of the input field is 32.', () => {
-        const numberOfEvents = NumberOfEventsDOM.queryByRole('textbox');
-        expect(numberOfEvents.value).toBe('32');
-    });
+  test('clears error message when input becomes valid', () => {
+    render(<NumberOfEvents numberOfEvents={32} setNumberOfEvents={setNumberOfEvents} setErrorAlert={setErrorAlert} />);
+    const inputElement = screen.getByTestId('number-of-events-input');
+    fireEvent.change(inputElement, { target: { value: '0' } });
+    expect(screen.getByText('Select number from 1 to 32')).toBeInTheDocument();
+    fireEvent.change(inputElement, { target: { value: '10' } });
+    expect(screen.queryByText('Select number from 1 to 32')).not.toBeInTheDocument();
+    expect(setNumberOfEvents).toHaveBeenCalledWith(10);
+    expect(setErrorAlert).toHaveBeenCalledWith('');
+  });
 });
