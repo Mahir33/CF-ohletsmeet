@@ -2,13 +2,11 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import mockData from './mock-data';
 
-
 export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
   return locations;
 };
-
 
 export const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
@@ -17,11 +15,8 @@ export const getToken = async (code) => {
   );
   const { access_token } = await response.json();
   access_token && localStorage.setItem("access_token", access_token);
- 
- 
   return access_token;
- };
-
+};
 
 export const checkToken = async (accessToken) => {
   const response = await fetch(
@@ -32,7 +27,6 @@ export const checkToken = async (accessToken) => {
 };
 
 export const getAccessToken = async () => {
-
   const accessToken = localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
@@ -66,33 +60,38 @@ export const removeQuery = () => {
     newurl = window.location.protocol + "//" + window.location.host;
     window.history.pushState("", "", newurl);
   }
- };
+};
 
 /**
- *
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
+  NProgress.start();
   if (window.location.href.startsWith('http://localhost')) {
+    NProgress.done();
     return mockData;
   }
 
   if (!navigator.onLine) {
     const events = localStorage.getItem("lastEvents");
     NProgress.done();
-    return events?JSON.parse(events):[];
+    return events ? JSON.parse(events) : [];
   }
 
   const token = await getAccessToken();
-  if(token){
+  if (token) {
     removeQuery();
-   const url =  "https://02a6w83iv8.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
-   const response = await fetch(url);
-   const result = await response.json();
-   if (result) {
-     NProgress.done();
-     localStorage.setItem("lastEvents", JSON.stringify(result.events));
-     return result.events;
-   } else return null;
+    const url = "https://02a6w83iv8.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
+    const response = await fetch(url);
+    const result = await response.json();
+    if (result) {
+      NProgress.done();
+      localStorage.setItem("lastEvents", JSON.stringify(result.events));
+      return result.events;
+    } else {
+      NProgress.done();
+      return null;
+    }
   }
+  NProgress.done();
 };
