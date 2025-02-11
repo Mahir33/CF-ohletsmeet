@@ -4,6 +4,9 @@ import EventList from './components/EventList';
 import CitySearch from './components/CitySearch';
 import NumberOfEvents from './components/NumberOfEvents';
 import Loader from './components/Loader';
+import CityEventsChart from './components/CityEventsChart';
+import EventGenresChart from './components/EventGenresChart';
+
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
 // API:
 import { extractLocations, getEvents } from './api';
@@ -13,7 +16,7 @@ import './App.css';
 function App() {
   const [events, setEvents] = useState([]);
   const [numberOfEvents, setNumberOfEvents] = useState(32);
-  const [allLocations, setAllLocations] = useState(null);
+  const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
   const [loading, setLoading] = useState(true);
   const [infoAlert, setInfoAlert] = useState("");
@@ -68,6 +71,10 @@ function App() {
         setNumberOfEvents={setNumberOfEvents}
         setErrorAlert={setErrorAlert}
         />
+       <div className="charts-container">
+        <EventGenresChart events={events} /> 
+        <CityEventsChart allLocations={allLocations} events={events} />
+      </div>
       <EventList events={events} />
     </div>
   );
