@@ -54,7 +54,7 @@ const CityEventsChart = ({ allLocations, events }) => {
           name="City"
           angle={45}
           interval={0}
-          tick={{ dx: 0, dy: 0, fontSize: 14 }}
+          tick={{ dx: 0, dy: 0, fontSize: 10 }}
         />
         <ZAxis 
           dataKey="z" 
