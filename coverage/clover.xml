@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1739266958271" clover="3.2.0">
-  <project timestamp="1739266958272" name="All files">
-    <metrics statements="116" coveredstatements="87" conditionals="38" coveredconditionals="26" methods="36" coveredmethods="23" elements="190" coveredelements="136" complexity="0" loc="116" ncloc="116" packages="2" files="10" classes="10"/>
+<coverage generated="1739353649178" clover="3.2.0">
+  <project timestamp="1739353649179" name="All files">
+    <metrics statements="96" coveredstatements="94" conditionals="34" coveredconditionals="30" methods="29" coveredmethods="29" elements="159" coveredelements="153" complexity="0" loc="96" ncloc="96" packages="2" files="9" classes="9"/>
     <package name="src">
-      <metrics statements="24" coveredstatements="12" conditionals="12" coveredconditionals="5" methods="4" coveredmethods="1"/>
+      <metrics statements="24" coveredstatements="22" conditionals="12" coveredconditionals="9" methods="4" coveredmethods="4"/>
       <file name="App.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\App.jsx">
-        <metrics statements="23" coveredstatements="11" conditionals="12" coveredconditionals="5" methods="4" coveredmethods="1"/>
-        <line num="17" count="41" type="stmt"/>
-        <line num="18" count="34" type="stmt"/>
-        <line num="19" count="34" type="stmt"/>
-        <line num="20" count="34" type="stmt"/>
-        <line num="21" count="34" type="stmt"/>
-        <line num="22" count="34" type="stmt"/>
-        <line num="23" count="34" type="stmt"/>
-        <line num="24" count="34" type="stmt"/>
-        <line num="26" count="34" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <metrics statements="23" coveredstatements="21" conditionals="12" coveredconditionals="9" methods="4" coveredmethods="4"/>
+        <line num="17" count="43" type="stmt"/>
+        <line num="18" count="39" type="stmt"/>
+        <line num="19" count="39" type="stmt"/>
+        <line num="20" count="39" type="stmt"/>
+        <line num="21" count="39" type="stmt"/>
+        <line num="22" count="39" type="stmt"/>
+        <line num="23" count="39" type="stmt"/>
+        <line num="24" count="39" type="stmt"/>
+        <line num="26" count="39" type="stmt"/>
+        <line num="27" count="20" type="stmt"/>
+        <line num="28" count="20" type="stmt"/>
+        <line num="29" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="35" type="stmt"/>
+        <line num="32" count="20" type="stmt"/>
+        <line num="33" count="20" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="41" count="34" type="stmt"/>
-        <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="20" type="stmt"/>
+        <line num="41" count="39" type="stmt"/>
+        <line num="42" count="20" type="cond" truecount="1" falsecount="1"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="52" count="34" type="stmt"/>
+        <line num="47" count="20" type="stmt"/>
+        <line num="49" count="20" type="stmt"/>
+        <line num="52" count="39" type="stmt"/>
       </file>
       <file name="mock-data.js" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\mock-data.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -36,18 +36,18 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="92" coveredstatements="75" conditionals="26" coveredconditionals="21" methods="32" coveredmethods="22"/>
+      <metrics statements="72" coveredstatements="72" conditionals="22" coveredconditionals="21" methods="25" coveredmethods="25"/>
       <file name="Alert.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\components\Alert.jsx">
         <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="28" count="3" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="12" count="9" type="stmt"/>
+        <line num="28" count="9" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
         <line num="48" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
@@ -56,102 +56,79 @@
         <line num="58" count="1" type="stmt"/>
       </file>
       <file name="CityEventsChart.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\components\CityEventsChart.jsx">
-        <metrics statements="11" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
         <line num="15" count="7" type="stmt"/>
-        <line num="16" count="68" type="stmt"/>
-        <line num="18" count="68" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="22" count="68" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="31" count="68" type="stmt"/>
+        <line num="16" count="66" type="stmt"/>
+        <line num="18" count="66" type="stmt"/>
+        <line num="19" count="31" type="stmt"/>
+        <line num="22" count="66" type="stmt"/>
+        <line num="23" count="31" type="stmt"/>
+        <line num="24" count="764" type="stmt"/>
+        <line num="25" count="28" type="stmt"/>
+        <line num="26" count="28" type="stmt"/>
+        <line num="28" count="31" type="stmt"/>
+        <line num="31" count="66" type="stmt"/>
       </file>
       <file name="CitySearch.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\components\CitySearch.jsx">
         <metrics statements="25" coveredstatements="25" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7"/>
         <line num="3" count="7" type="stmt"/>
-        <line num="4" count="122" type="stmt"/>
-        <line num="5" count="122" type="stmt"/>
-        <line num="6" count="122" type="stmt"/>
-        <line num="8" count="122" type="stmt"/>
-        <line num="9" count="17" type="cond" truecount="2" falsecount="0"/>
-        <line num="12" count="122" type="stmt"/>
-        <line num="13" count="42" type="stmt"/>
-        <line num="14" count="42" type="cond" truecount="2" falsecount="0"/>
-        <line num="15" count="72" type="stmt"/>
-        <line num="18" count="42" type="stmt"/>
-        <line num="19" count="42" type="stmt"/>
-        <line num="22" count="42" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="6" type="stmt"/>
-        <line num="25" count="36" type="stmt"/>
-        <line num="27" count="42" type="stmt"/>
-        <line num="30" count="122" type="stmt"/>
-        <line num="31" count="4" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="33" count="4" type="stmt"/>
-        <line num="34" count="4" type="stmt"/>
-        <line num="35" count="4" type="stmt"/>
-        <line num="38" count="122" type="stmt"/>
-        <line num="40" count="8" type="stmt"/>
-        <line num="44" count="48" type="stmt"/>
+        <line num="4" count="169" type="stmt"/>
+        <line num="5" count="169" type="stmt"/>
+        <line num="6" count="169" type="stmt"/>
+        <line num="8" count="169" type="stmt"/>
+        <line num="9" count="48" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="169" type="stmt"/>
+        <line num="13" count="56" type="stmt"/>
+        <line num="14" count="56" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="96" type="stmt"/>
+        <line num="18" count="56" type="stmt"/>
+        <line num="19" count="56" type="stmt"/>
+        <line num="22" count="56" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="25" count="48" type="stmt"/>
+        <line num="27" count="56" type="stmt"/>
+        <line num="30" count="169" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="38" count="169" type="stmt"/>
+        <line num="40" count="11" type="stmt"/>
+        <line num="44" count="66" type="stmt"/>
       </file>
       <file name="Event.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\components\Event.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="3" count="8" type="stmt"/>
-        <line num="4" count="81" type="stmt"/>
-        <line num="5" count="81" type="stmt"/>
-        <line num="8" count="81" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-      </file>
-      <file name="EventGenresChart.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\components\EventGenresChart.jsx">
-        <metrics statements="20" coveredstatements="9" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="1"/>
-        <line num="6" count="7" type="stmt"/>
-        <line num="7" count="68" type="stmt"/>
-        <line num="8" count="68" type="stmt"/>
-        <line num="9" count="68" type="stmt"/>
-        <line num="11" count="68" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="15" count="68" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="23" count="68" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="41" count="68" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="64" count="7" type="stmt"/>
+        <line num="4" count="528" type="stmt"/>
+        <line num="5" count="528" type="stmt"/>
+        <line num="8" count="528" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
       </file>
       <file name="EventList.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\components\EventList.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="5" count="7" type="stmt"/>
-        <line num="6" count="42" type="stmt"/>
-        <line num="8" count="69" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="44" type="stmt"/>
+        <line num="8" count="515" type="cond" truecount="2" falsecount="0"/>
       </file>
       <file name="Loader.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\components\Loader.jsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="7" type="stmt"/>
-        <line num="5" count="35" type="stmt"/>
+        <line num="5" count="21" type="stmt"/>
       </file>
       <file name="NumberOfEvents.jsx" path="C:\Users\fbada\Desktop\CF\WD\CF-ohletsmeet\src\components\NumberOfEvents.jsx">
         <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="7" methods="2" coveredmethods="2"/>
         <line num="3" count="8" type="stmt"/>
-        <line num="4" count="41" type="stmt"/>
-        <line num="6" count="41" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="8" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="4" count="43" type="stmt"/>
+        <line num="6" count="43" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="6" type="cond" truecount="4" falsecount="0"/>
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="18" count="41" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="18" count="43" type="stmt"/>
       </file>
     </package>
   </project>

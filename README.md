@@ -1,4 +1,4 @@
-# Meet App
+# Oh Lets Meet App
 
 This repository contains the ** Oh Lets Meet App**, a serverless, progressive web application (PWA) that provides a smooth and interactive experience for users to view and filter upcoming events. The app integrates with the Google Calendar API to display real-time event data.
 

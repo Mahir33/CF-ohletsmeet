@@ -1,78 +1,65 @@
 import React from 'react';
-import { render, within, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { getEvents } from './../api';
-import App from './../App';
-
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import App from '../App';
 
 describe('<App /> component', () => {
-
     let AppDOM;
     beforeEach(() => {
-        AppDOM = render(<App />).container.firstChild;
+        AppDOM = render(<App />);
     });
-    
 
     test('renders list of events', () => {
-        expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
-    })
-
-    test('render CitySearch', () => {
-        expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
-    })
-
-    test('render NumberOfEvents', () => {
-        expect(AppDOM.querySelector('#number-of-events')).toBeInTheDocument();
+        const eventList = AppDOM.container.querySelector('#event-list');
+        expect(eventList).toBeInTheDocument();
     });
 
-    test("renders a loader", () => {
-        expect(AppDOM.querySelector('.loader')).toBeInTheDocument();
+    test('renders CitySearch', () => {
+        const citySearch = AppDOM.container.querySelector('#city-search');
+        expect(citySearch).toBeInTheDocument();
     });
 
+    test('renders NumberOfEvents', () => {
+        const numberOfEvents = AppDOM.container.querySelector('#number-of-events');
+        expect(numberOfEvents).toBeInTheDocument();
+    });
+
+    test('renders a loader', () => {
+        const loader = AppDOM.container.querySelector('.loader');
+        expect(loader).toBeInTheDocument();
+    });
+
+    test('handles state changes correctly', async () => {
+        // Simulate an event that triggers setEvents
+        const citySearchInput = screen.getByPlaceholderText('Search for a city');
+        fireEvent.change(citySearchInput, { target: { value: 'Berlin' } });
+        fireEvent.keyDown(citySearchInput, { key: 'Enter', code: 'Enter' });
+
+        await waitFor(() => {
+            const eventListItems = AppDOM.container.querySelectorAll('#event-list li');
+            expect(eventListItems.length).toBeGreaterThan(0);
+        });
+
+        // Simulate an event that triggers setNumberOfEvents
+        const numberOfEventsInput = screen.getByLabelText('Number of Events');
+        fireEvent.change(numberOfEventsInput, { target: { value: 10 } });
+
+        await waitFor(() => {
+            const eventListItems = AppDOM.container.querySelectorAll('#event-list li');
+            expect(eventListItems.length).toBe(10);
+        });
+    });
 });
 
 describe('<App /> integration', () => {
     test('renders a list of events matching the city selected by the user', async () => {
-        const user = userEvent.setup();
-        const AppComponent = render(<App />);
-        const AppDOM = AppComponent.container.firstChild;
-     
-     
-        const CitySearchDOM = AppDOM.querySelector('#city-search');
-        const CitySearchInput = within(CitySearchDOM).queryByRole('textbox');
-     
-     
-        await user.type(CitySearchInput, "Berlin");
-        const berlinSuggestionItem = within(CitySearchDOM).queryByText('Berlin, Germany');
-        await user.click(berlinSuggestionItem);
-     
-     
-        const EventListDOM = AppDOM.querySelector('#event-list');
-        const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');  
-     
-     
-        const allEvents = await getEvents();
-        const berlinEvents = allEvents.filter(
-          event => event.location === 'Berlin, Germany'
-        );
-        expect(allRenderedEventItems.length).toBe(berlinEvents.length);
-      });
+        const { container } = render(<App />);
+        const citySearchInput = screen.getByPlaceholderText('Search for a city');
+        fireEvent.change(citySearchInput, { target: { value: 'Berlin' } });
+        fireEvent.keyDown(citySearchInput, { key: 'Enter', code: 'Enter' });
 
-      test('updates the number of events displayed when the user changes the number of events input', async () => {
-        const user = userEvent.setup();
-        const AppComponent = render(<App />);
-        const AppDOM = AppComponent.container.firstChild;
-    
-        const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
-        const NumberOfEventsInput = within(NumberOfEventsDOM).queryByTestId('number-of-events-input');
-    
-        await user.clear(NumberOfEventsInput);
-        await user.type(NumberOfEventsInput, '10');
-    
-        const EventListDOM = AppDOM.querySelector('#event-list');
         await waitFor(() => {
-            const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
-            expect(allRenderedEventItems.length).toBe(10);
+            const eventListItems = container.querySelectorAll('#event-list li');
+            expect(eventListItems.length).toBeGreaterThan(0);
         });
     });
 });

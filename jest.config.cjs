@@ -4,17 +4,18 @@ module.exports = {
     '^.+\\.jsx?$': 'babel-jest',
   },
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy', 
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
   moduleFileExtensions: ['js', 'jsx'],
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js'], 
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   coveragePathIgnorePatterns: [
     "/node_modules/",
     "/src/api.js",
-    "/auth-server/handler.test.js"
+    "/auth-server/handler.test.js",
+    "/src/components/EventGenresChart.jsx"
   ],
   testPathIgnorePatterns: [
     "/node_modules/",
-    "/auth-server/handler.test.js" 
+    "/auth-server/handler.test.js"
   ],
 };

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropsType from 'prop-types'
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from 'recharts'
 
