@@ -26,8 +26,14 @@ input[type="number"] {
   font-size: 14px;
   line-height: 20px;
   align-self: center;
+  width: 300px;
   height: 38px;
   margin-bottom: 20px;
+}
+
+.noe-label {
+  display: block;
+  margin-bottom: 5px;
 }
 
 .city {
@@ -132,6 +138,26 @@ input[type="number"] {
   padding: 1rem;
   margin-bottom: 0.8rem;
  }
+
+.city-events-title, .chart-title {
+  margin: -20px 0 10px;
+  color: rgb(158, 158, 158);
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
+.chart-title {
+  margin-top: 0;
+}
+
+.city-event-charts {
+  margin: 30px;
+}
+
+.charts {
+ padding: 0 0 30px 0;
+}
+
 
  @media (max-width: 768px) {
   .charts-container {

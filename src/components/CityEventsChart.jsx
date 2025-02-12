@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropsType from 'prop-types';
 import {
   ScatterChart,
   Scatter,
@@ -10,6 +9,8 @@ import {
   Tooltip,
   ResponsiveContainer
 } from 'recharts';
+
+import "../App.css";
 
 
 const CityEventsChart = ({ allLocations, events }) => {
@@ -41,21 +42,33 @@ const CityEventsChart = ({ allLocations, events }) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
+        
+        <XAxis 
+          dataKey="count" 
+          type="number" 
+          name="Number of events: " 
+          allowDecimals={false} />
+        <YAxis
           dataKey="city"
           type="category"
           name="City"
-          angle={60}
+          angle={45}
           interval={0}
-          tick={{ dx: 20, dy: 40, fontSize: 14 }}
+          tick={{ dx: 0, dy: 0, fontSize: 14 }}
         />
-        <YAxis dataKey="count" type="number" name="number of events" allowDecimals={false} />
-        <ZAxis dataKey="z" type="number" range={[64, 144]} name="score" unit="km" />
+        <ZAxis 
+          dataKey="z" 
+          type="number" range={[64, 144]} name="score" unit="km" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
         <Legend />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-        <Scatter name="Popular Cities Events Chart" data={data} fill="#8884d8" />
+        <Scatter 
+          data={data} 
+          fill={"#8884d8"}
+          name="Cities / Events"
+          />
       </ScatterChart>
+      <p className='city-events-title'>2. Popular Cities Events Chart</p>
     </ResponsiveContainer>
   );
 }

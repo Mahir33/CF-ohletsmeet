@@ -40,11 +40,9 @@ function App() {
 
   useEffect(() => {
     if (!navigator.onLine) {
-      // set the warning alert message to an empty string ""
-      setWarningAlert('App offline, last loaded events will be used for events')
+      setWarningAlert('App offline, last loaded events will be used for events');
     } else {
-      // set the warning alert message to a non-empty string
-      setWarningAlert('')
+      setWarningAlert('');
     }
     fetchData();
   }, [numberOfEvents, currentCity]);
@@ -72,8 +70,12 @@ function App() {
         setErrorAlert={setErrorAlert}
         />
        <div className="charts-container">
-        <EventGenresChart events={events} /> 
-        <CityEventsChart allLocations={allLocations} events={events} />
+       <div className="charts">
+          <EventGenresChart events={events} />
+        </div>
+        <div className="city-events-chart"> 
+          <CityEventsChart allLocations={allLocations} events={events} />
+        </div>
       </div>
       <EventList events={events} />
     </div>

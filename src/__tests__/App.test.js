@@ -48,6 +48,26 @@ describe('<App /> component', () => {
             expect(eventListItems.length).toBe(10);
         });
     });
+
+    test('displays warning alert when offline', async () => {
+        // Simulate offline mode
+        jest.spyOn(navigator, 'onLine', 'get').mockReturnValueOnce(false);
+        render(<App />);
+        await waitFor(() => {
+            const warningAlert = screen.getByText('App offline, last loaded events will be used for events');
+            expect(warningAlert).toBeInTheDocument();
+        });
+    });
+
+    test('displays no warning alert when online', async () => {
+        // Simulate online mode
+        jest.spyOn(navigator, 'onLine', 'get').mockReturnValueOnce(true);
+        render(<App />);
+        await waitFor(() => {
+            const warningAlert = screen.queryByText('App offline, last loaded events will be used for events');
+            expect(warningAlert).not.toBeInTheDocument();
+        });
+    });
 });
 
 describe('<App /> integration', () => {

@@ -47,14 +47,21 @@ const EventGenresChart = ({ events }) => {
           fill="#8884d8"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={130}
+          outerRadius={100}
+          paddingAngle={1}
+          
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+            <Cell 
+              key={`cell-${index}`} 
+              fill={colors[index % colors.length]} 
+              
+              />
           ))}
         </Pie>
-        <Legend verticalAlign="bottom" height={36}/>
+        <Legend verticalAlign="bottom" height={55}/>
       </PieChart>
+      <p className="chart-title">1. Events by Genre Chart</p>
     </ResponsiveContainer>
   )
 }
