@@ -154,13 +154,26 @@ input[type="number"] {
   margin: 30px;
 }
 
-.charts {
+.charts-genres {
  padding: 0 0 30px 0;
+ display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
+@media (max-width: 1024px) {
+  .city-events-charts {
+  max-width: 50%;
+  }
+}
+
  @media (max-width: 768px) {
+  /* .charts-genres {
+    max-width: 100%;
+  } */
   .charts-container {
     grid-template-columns: 1fr;
   }
  }
+ 

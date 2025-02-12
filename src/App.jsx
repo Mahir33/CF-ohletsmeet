@@ -70,7 +70,7 @@ function App() {
         setErrorAlert={setErrorAlert}
         />
        <div className="charts-container">
-       <div className="charts">
+       <div className="charts-genres">
           <EventGenresChart events={events} />
         </div>
         <div className="city-events-chart"> 
