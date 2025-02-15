@@ -5,12 +5,13 @@ import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from 'recharts'
 
 const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([])
-  const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
+  const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
   const colors = ['#DD0000', '#00DD00', '#0000DD', '#DDDD00', '#DD00DD'];
 
+  
   useEffect(() => {
     setData(getData())
-  }, [`${events}`]);
+  }, [events]);
 
   const getData = () => {
     const data = genres.map((genre) => {
@@ -20,6 +21,8 @@ const EventGenresChart = ({ events }) => {
     return data
   };
   
+  console.log(events);
+
   const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) => {
     const RADIAN = Math.PI / 180;
     const radius = outerRadius;
